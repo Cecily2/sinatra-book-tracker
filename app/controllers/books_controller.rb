@@ -68,12 +68,12 @@ class BooksController < ApplicationController
       end
     else
       @book.read = false
-      @book.date_read.clear
-      @book.rating.clear
-      @book.comments.clear
+      @book.date_read = nil
+      @book.rating = nil
+      @book.comments = nil
     end
 
-    @book.update
+    @book.save
 
     redirect "/books/#{params[:id]}"
 
