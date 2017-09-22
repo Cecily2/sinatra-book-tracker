@@ -9,6 +9,7 @@ class CreateBooks < ActiveRecord::Migration[5.1]
       t.string :comments
       t.boolean :read
       t.datetime :date_read
+      t.integer :user_id
     end
   end
 end
