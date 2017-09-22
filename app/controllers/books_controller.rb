@@ -17,15 +17,17 @@ class BooksController < ApplicationController
   end
 
   post "/books" do
-    url = "https://openlibrary.org/api/books?bibkeys=ISBN:#{params[:isbn]}&format=json&jscmd=data"
+    url = "https://www.googleapis.com/books/v1/volumes?q=intitle:#{params[:title]}&key=#{ENV['API_KEY']}"
     uri = URI(url)
     response = Net::HTTP.get(uri)
     parsed_response = JSON.parse(response)
+    book_data = parsed_response["items"][0]["volumeInfo"]
 
-    new_book = Book.new(isbn: params[:isbn])
-    new_book.name = parsed_response["ISBN:#{params[:isbn]}"]["title"]
-    new_book.author = parsed_response["ISBN:#{params[:isbn]}"]["authors"][0]["name"]
-    new_book.cover = parsed_response["ISBN:#{params[:isbn]}"]["cover"]["large"]
+    new_book = Book.new
+    
+    new_book.name = book_data["title"]
+    new_book.author = book_data["authors"][0]
+    new_book.cover = book_data["imageLinks"]["thumbnail"]
     
     new_book.user_id = current_user.id
 
@@ -35,7 +37,7 @@ class BooksController < ApplicationController
       new_book.comments = params["comments"]
       new_book.date_read = Time.now
     end
-
+    
     new_book.save
 
   end

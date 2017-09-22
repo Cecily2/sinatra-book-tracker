@@ -11,5 +11,5 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-require './api.rb'
+require_relative './api'
 require_all 'app'
