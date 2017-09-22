@@ -36,6 +36,8 @@ class BooksController < ApplicationController
       new_book.date_read = Time.now
     end
 
+    new_book.save
+
   end
 
   get "/books/:id" do
