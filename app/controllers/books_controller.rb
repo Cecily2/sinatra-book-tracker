@@ -53,6 +53,8 @@ class BooksController < ApplicationController
   end
 
   get "/books/:id/edit" do
+    @book = Book.find(params[:id])
+    erb :'books/edit'    
   end
 
   patch "/books/:id" do

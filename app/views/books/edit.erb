@@ -1,0 +1,31 @@
+<% @title = "Edit #{@book.name}" %>
+
+<form action="/books/<%= @book.id %>" method="post">
+
+  <input type="hidden" name="_method" value="patch">
+
+  <p>
+    <label for="read">Read?</label><br>
+    <input type="checkbox" id="read" name="read">
+  </p>
+
+  <p>
+      <label for="rating">Your Rating:</label><br>
+      <select name="rating" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+  </p>
+
+  <p>
+      <label for="comments">Comments:</label><br>
+      <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
+  </p>
+
+  <p>
+    <input type="submit" value="Submit">
+  </p> 
+</form>
