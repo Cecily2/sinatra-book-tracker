@@ -1,5 +1,7 @@
 <% @title = "#{@user.username}'s books" %>
 
+<p><%= @user.username %> has <%= @user.books.count %> <%= @user.books.count == 1 ? "book" : "books"%></p>
+
 <% @user.books.each do |b| %>
   <a href="/books/<%= b.id %>"><%= b.name %></a><br>
   <%= b.author %><br>
