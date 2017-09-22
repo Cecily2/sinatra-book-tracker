@@ -72,11 +72,18 @@ class BooksController < ApplicationController
       @book.rating = nil
       @book.comments = nil
     end
-
     @book.save
-
     redirect "/books/#{params[:id]}"
+  end
 
+  delete "/books/:id/delete" do
+    @book = Book.find(params[:id])
+    if logged_in? && @book.user_id == current_user.id
+      @book.delete
+      redirect "/books"
+    else
+      redirect "/books/#{params[:id]}"
+    end    
   end
 
 end
