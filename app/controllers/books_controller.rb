@@ -2,6 +2,7 @@ class BooksController < ApplicationController
 
   get "/books" do
     if logged_in?
+      @books = current_user.books
       erb :'books/books'
     else
       redirect "/login"
