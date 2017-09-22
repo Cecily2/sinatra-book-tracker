@@ -5,10 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/stylesheets/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Cabin:600|Lora:400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <title>Book Tracker - <%= @title %></title>
 </head>
 <body>
 
+  <div id="header">
+    <div id="logo"><i class="fa fa-book" aria-hidden="true"></i> Book Tracker</div>
+    <div id="links">
+      <a href="/">Home</a> &nbsp;&nbsp;
+      |&nbsp;&nbsp; <a href="/users">Users</a> &nbsp;&nbsp;
+      
+      <% if logged_in? %>
+      |&nbsp;&nbsp; <a href="/books/new">Add New Book</a>  &nbsp;&nbsp;    
+      |&nbsp;&nbsp; <a href="/logout">Logout</a>
+      <% else %>
+        |&nbsp;&nbsp; <a href="/login">Log In</a> &nbsp;&nbsp;
+        |&nbsp;&nbsp; <a href="/login">Signup</a>
+      <% end %>
+    </div>
+  </div>
   <div id="container">
      <h1><%= @title %></h1>
      <%= yield %>
