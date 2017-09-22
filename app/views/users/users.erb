@@ -1,5 +1,7 @@
 <% @title = "View All Users" %>
 
-<% User.all.each do |b| %>
-  <a href="/users/<%= u.id %>"><%= u.name %></a> (<%= u.books.count %> books)
-<% end %>
+<ul>
+  <% User.all.each do |u| %>
+  <li><a href="/users/<%= u.id %>"><%= u.username %></a> (<%= u.books.count %> <%= u.books.count > 1 ? "books" : "book"%>)</li>
+  <% end %>
+</ul>

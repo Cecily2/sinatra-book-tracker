@@ -22,6 +22,7 @@ class BooksController < ApplicationController
     uri = URI(url)
     response = Net::HTTP.get(uri)
     parsed_response = JSON.parse(response)
+
     book_data = parsed_response["items"][0]["volumeInfo"]
 
     new_book = Book.new
@@ -41,7 +42,7 @@ class BooksController < ApplicationController
     end
     
     new_book.save
-    
+
     redirect "/books"
 
   end
