@@ -1,0 +1,12 @@
+<% @title = @book.name %>
+
+<img src="<%= @book.cover %>">
+
+<p>Author: <%= @book.author %></p>
+<p>ISBN: <%= @book.isbn %></p>
+
+<% if @book.read %>
+  <p>Rating: <%= @book.rating %></p>
+  <p>Comments: <%= @book.comments %></p>
+  <p>Date Read: <%= @book.date_read %></p>  
+<% end %>
