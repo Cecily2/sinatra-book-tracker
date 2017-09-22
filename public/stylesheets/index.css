@@ -2,21 +2,31 @@ body {
   font-family: 'Lora', serif;
   margin: 0;
   padding: 0;
+  background: #ffafbd; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#content {
+  background: rgba(255,255,255,0.95);
+  min-height: 100vh;
+  padding-top: 65px;
+  box-sizing: border-box;
 }
 
 #container {
   padding: 15px;
   margin: 0 auto;
   max-width: 1000px;
-  background: #fff;
 }
 
 #header {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   font-family: 'Cabin', sans-serif;  
-  background: #ffafbd; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
 #logo {
@@ -62,6 +72,20 @@ h1, h2 {
 }
 
 
+.grid-item {
+  box-sizing: border-box;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  width: 31%;
+  padding: 10px;
+  margin: 1%;
+  float: left;
+  background: #fff;
+}
+
+.grid-item h2 a {
+  text-decoration: none;
+}
+
 
 
 @media (max-width: 600px) {
@@ -69,8 +93,28 @@ h1, h2 {
     position: relative;
     top: 0;
     left: 0;
+    padding: 10px;
+    margin: 0;
     background: rgba(255,255,255,0.4);
-    padding: 10px 16px;
     border-radius: 0;    
+  }
+
+
+  #content {
+    padding-top: 95px;
+  }
+  
+
+}
+
+@media (max-width: 700px) {
+  .grid-item {
+    width: 48%;
+  }
+}
+
+@media (max-width: 460px) {
+  .grid-item {
+    width: 100%;
   }
 }

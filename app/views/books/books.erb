@@ -5,8 +5,13 @@
   <a href="/books/new">Add New Book</a>
 </p>
 
-<% @books.each do |b| %>
-  <a href="/books/<%= b.id %>"><%= b.name %></a><br>
-  <%= b.author %><br>
-  <img src="<%= b.cover %>"><br><br><hr>
-<% end %>
+
+<div class="grid">
+    <% @books.each do |b| %>
+    <div class="grid-item">
+        <h2><a href="/books/<%= b.id %>"><%= b.name %></a></h2>
+        <%= b.author %><br>
+        <img src="<%= b.cover %>">
+    </div>
+  <% end %>
+</div>
