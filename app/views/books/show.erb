@@ -10,3 +10,12 @@
   <p>Comments: <%= @book.comments %></p>
   <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>  
 <% end %>
+
+
+<% if @book.user_id == current_user.id %>
+  <a href="/books/<%= @book.id %>/edit">Edit Book</a>
+  <form action="/books/<%= @book.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+<% end %>
