@@ -8,5 +8,5 @@
 <% if @book.read %>
   <p>Rating: <%= @book.rating %></p>
   <p>Comments: <%= @book.comments %></p>
-  <p>Date Read: <%= @book.date_read %></p>  
+  <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>  
 <% end %>
