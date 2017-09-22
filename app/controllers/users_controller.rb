@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     end
   end
 
+  post "/signup" do    
+    user = User.new(params)
+    binding.pry
+    redirect "/books"
+  end
+
   get "/login" do
     if logged_in?
       redirect "/books"
