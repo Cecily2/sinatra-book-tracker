@@ -1,5 +1,9 @@
 <% @title = "#{current_user.username}'s books" %>
 
+<p>
+  <a href="/books/new">Add New Book</a>
+</p>
+
 <% @books.each do |b| %>
   <a href="/books/<%= b.id %>"><%= b.name %></a><br>
   <%= b.author %><br>
