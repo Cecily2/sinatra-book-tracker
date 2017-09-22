@@ -41,6 +41,8 @@ class BooksController < ApplicationController
     end
     
     new_book.save
+    
+    redirect "/books"
 
   end
 
