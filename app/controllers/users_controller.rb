@@ -12,9 +12,13 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do    
-    user = User.new(params)
-    binding.pry
-    redirect "/books"
+    if user = User.new(params)
+      user.save
+      session[:user_id] = user.id
+      redirect "/books"
+    else
+      redirect "/signup"
+    end
   end
 
   get "/login" do
