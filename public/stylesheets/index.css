@@ -1,11 +1,11 @@
 body {
-  background: #fafafa;
   font-family: 'Lora', serif;
   margin: 0;
   padding: 0;
 }
 
 #container {
+  padding: 15px;
   margin: 0 auto;
   max-width: 1000px;
   background: #fff;
@@ -13,18 +13,20 @@ body {
 
 #header {
   width: 100%;
-  background: #ccc;
   font-family: 'Cabin', sans-serif;  
+  background: #ffafbd; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #logo {
-  padding: 10px;
-  color: #666;
+  padding: 15px;
+  color: #000;
   font-size: 22px;
 }
 
 #links {
-  padding: 12px;
+  padding: 16px;
   position: absolute;
   top: 0;
   right: 20px;
@@ -41,6 +43,17 @@ body {
 }
 
 
+
+a, a:active, a:visited {
+  color: #b27a84; 
+}
+
+a:hover {
+  color: #7c555c;
+}
+
+
 h1, h2 {
   font-family: 'Cabin', sans-serif;
+  margin: 0 0 10px;
 }
