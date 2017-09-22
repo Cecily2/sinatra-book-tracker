@@ -58,8 +58,25 @@ class BooksController < ApplicationController
   end
 
   patch "/books/:id" do
-    # I can check if a value has changed by
-    # comparing the info in params to the info in database
+    @book = Book.find(params[:id])
+    if params["read"] == "on"
+      @book.read = true
+      @book.rating = params["rating"].to_i
+      @book.comments = params["comments"]  
+      if !@book.date_read
+        @book.date_read = Time.now        
+      end
+    else
+      @book.read = false
+      @book.date_read.clear
+      @book.rating.clear
+      @book.comments.clear
+    end
+
+    @book.update
+
+    redirect "/books/#{params[:id]}"
+
   end
 
 end
