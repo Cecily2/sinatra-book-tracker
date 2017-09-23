@@ -1,11 +1,10 @@
 <% @title = "Your Books" %>
-
+<% if flash.has?(:message) %>
+  <div id="flash"><%= flash[:message] %></div>
+<% end %>
 <h1>Welcome, <%= current_user.username %>!</h1>
-
 <p>You've read <%= @read.count %> <%= @read.count == 1 ? "book" : "books"%> and have <%= @to_read.count %> <%= @to_read.count == 1 ? "book" : "books"%> on your to-read list.
   View them below or <a href="/books/new">add a new book</a>.</p>
-
-
 <h2>Your To-Read List</h2>
 <div class="to-read-grid">
     <% @to_read.each do |b| %>
@@ -16,9 +15,7 @@
     </div>
   <% end %>
 </div>
-
 <hr>
-
 <h2>Books You've Read</h2>
 <div class="read-grid">
     <% @read.each do |b| %>
@@ -38,5 +35,4 @@
     </div>
   <% end %>
 </div>
-
 <script src="/js/masonry.js"></script>

@@ -1,47 +1,33 @@
 <% @title = "Edit #{@book.name}" %>
-
 <div id="form-container">
-<h1>Edit <%= @book.name %></h1>
-
-<p class="greyed">Author: <%= @book.author %></p>
-<p class="greyed">ISBN: <%= @book.isbn %></p>
-
-
-<form action="/books/<%= @book.id %>" method="post">
-
-  <input type="hidden" name="_method" value="patch">
-
-  <p>
-      <input type="checkbox" id="read" name="read" <%= "checked" if @book.read %> >
-      <label for="read" class="read">I've read it!</label><br>
-    
-  </p>
-
-  <div <%= "class=\"hide\"" unless @book.read %> id="extraforms">
-
-      <label class="greyed" for="rating">Rating:</label><br>
-      <div class="select-style">
-          <select name="rating" id="rating">
+    <h1>Edit <%= @book.name %></h1>
+    <p class="greyed">Author: <%= @book.author %></p>
+    <p class="greyed">ISBN: <%= @book.isbn %></p>
+    <form action="/books/<%= @book.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <p>
+        <input type="checkbox" id="read" name="read" <%= "checked" if @book.read %> >
+        <label for="read" class="read">I've read it!</label><br>    
+    </p>
+    <div <%= "class=\"hide\"" unless @book.read %> id="extraforms">
+        <label class="greyed" for="rating">Rating:</label><br>
+        <div class="select-style">
+            <select name="rating" id="rating">
             <option value="1">1 star</option>
             <option value="2">2 stars</option>
             <option value="3">3 stars</option>
             <option value="4">4 stars</option>
             <option value="5">5 stars</option>
-          </select>
-      </div>  
-    
-    
-      <p>
-          <label class="greyed" for="comments">Comments:</label><br>
-          <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
-      </p>    
-  </div>
-
-  <p>
-    <input type="submit" value="Submit" class="submit">
-  </p> 
-</form>
-
+            </select>
+        </div>  
+        <p>
+            <label class="greyed" for="comments">Comments:</label><br>
+            <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
+        </p>    
+    </div>
+    <p>
+        <input type="submit" value="Submit" class="submit">
+    </p> 
+    </form>
 </div>
-
 <script src="/js/checkbox.js"></script>
