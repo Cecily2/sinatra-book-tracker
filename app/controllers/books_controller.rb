@@ -21,7 +21,7 @@ class BooksController < ApplicationController
   end
 
   post "/books" do
-    if params[:search_term] == nil
+    if params[:search_term] == ""
       flash[:message] = "Enter a title or ISBN."
       redirect "/books/new"
     elsif !logged_in?
