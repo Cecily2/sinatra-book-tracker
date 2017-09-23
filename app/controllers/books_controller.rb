@@ -29,7 +29,7 @@ class BooksController < ApplicationController
       redirect "/login"
     else
       book_data = get_book_data(params[:search_term])
-      if book_data = []
+      if book_data == nil
         flash[:message] = "We couldn't find your book - sorry!"
         redirect "/books/new"
       else
@@ -112,7 +112,11 @@ class BooksController < ApplicationController
       uri = URI(url)
       response = Net::HTTP.get(uri)
       parsed_response = JSON.parse(response)
-      parsed_response["items"][0]["volumeInfo"]
+      if parsed_response["totalItems"] >= 1
+        parsed_response["items"][0]["volumeInfo"]
+      else
+        nil
+      end
     end
   end
 end
