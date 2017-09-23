@@ -4,32 +4,33 @@
   <h1>Add New Book</h1>
   <form action="/books" method="post">
     <p>
-      <label for="search_term">Title or ISBN:</label><br>
+      <label class="greyed" for="search_term">Title or ISBN:</label><br>
       <input type="text" id="search_term" name="search_term">
     </p>
     <p>
-      <input type="checkbox" id="read" name="read"> <label for="read">I've read it!</label><br>
+      <input type="checkbox" id="read" name="read"> <label for="read" class="read">I've read it!</label><br>
     </p>
 
     <div class="hide" id="extraforms">
+      <label class="greyed" for="rating">Rating:</label><br>         
+      <div class="select-style">
+        <select name="rating" id="rating">
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+        </select>
+      </div>  
+
         <p>
-            <label for="rating">Rating:</label><br>
-            <select name="rating" id="rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-        </p>
-        <p>
-            <label for="comments">Comments:</label><br>
+            <label class="greyed" for="comments">Comments:</label><br>
             <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
         </p>
     </div>
     
     <p>
-      <input type="submit" value="Submit">
+      <input type="submit" class="submit" value="Submit">
     </p> 
   </form>
 </div>

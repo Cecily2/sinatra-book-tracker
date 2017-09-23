@@ -118,7 +118,7 @@ hr {
   margin: 25px 0;
 }
 
-textarea:focus, input:focus{
+textarea:focus, input:focus, select:focus {
   outline: none;
 }
 
@@ -127,10 +127,48 @@ input[type="text"], textarea {
   font-family: 'Lora', serif;
   font-size: 18px;
   width: 100%;
+  padding: 5px;
+  border: 2px solid #ffd7de;
 }
+
+label.read {
+  font-size: 18px;
+}
+
+
 
 input[type="checkbox"] {
 
+}
+
+
+.select-style {
+  border: 2px solid #ffd7de;
+  width: 120px;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+.select-style select {
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Lora", serif;
+  width: 120%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+
+.submit {
+  border: 2px solid #ffd7de;
+  background: #fafafa;
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Lora", serif; 
+  font-weight: bold;
+  cursor: pointer;  
 }
 
 .delete-form {
@@ -170,7 +208,7 @@ div .hide {
 }
 
 .greyed {
-  color: #bababa;
+  color: #999;
 }
 
 @media (max-width: 600px) {
