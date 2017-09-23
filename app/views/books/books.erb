@@ -8,7 +8,7 @@
 <div class="to-read-grid">
     <% @to_read.each do |b| %>
     <div class="grid-item">
-        <img src="<%= b.cover %>">
+        <a href="/books/<%= b.id %>"><img src="<%= b.cover %>"></a>
         <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
         by <%= b.author %><br>
     </div>
@@ -21,7 +21,7 @@
 <div class="read-grid">
     <% @read.each do |b| %>
     <div class="grid-item">
-        <img src="<%= b.cover %>">
+        <a href="/books/<%= b.id %>"><img src="<%= b.cover %>"></a>
         <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
         by <%= b.author %><br><br>
       <div class="read-info">
