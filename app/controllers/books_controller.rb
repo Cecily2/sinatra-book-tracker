@@ -54,27 +54,35 @@ class BooksController < ApplicationController
   end
 
   get "/books/:id/edit" do
-    @book = Book.find(params[:id])
-    erb :'books/edit'    
+    @book = Book.find(params[:id])   
+    if logged_in? && @book.user_id == current_user.id      
+      erb :'books/edit'    
+    else
+      redirect "/login"
+    end
   end
 
   patch "/books/:id" do
     @book = Book.find(params[:id])
-    if params["read"] == "on"
-      @book.read = true
-      @book.rating = params["rating"].to_i
-      @book.comments = params["comments"]  
-      if !@book.date_read
-        @book.date_read = Time.now        
+    if logged_in? && @book.user_id == current_user.id
+      if params["read"] == "on"
+        @book.read = true
+        @book.rating = params["rating"].to_i
+        @book.comments = params["comments"]  
+        if !@book.date_read
+          @book.date_read = Time.now        
+        end
+      else
+        @book.read = false
+        @book.date_read = nil
+        @book.rating = nil
+        @book.comments = nil
       end
+      @book.save
+      redirect "/books/#{params[:id]}"
     else
-      @book.read = false
-      @book.date_read = nil
-      @book.rating = nil
-      @book.comments = nil
+      redirect "/login"
     end
-    @book.save
-    redirect "/books/#{params[:id]}"
   end
 
   delete "/books/:id/delete" do
