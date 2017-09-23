@@ -16,6 +16,7 @@ class BooksController < ApplicationController
       erb :'books/new'
     else
       flash[:message] = "Log in to add a new book."
+      session[:after_login] = "/books/new"
       redirect "/login"
     end
   end
@@ -26,6 +27,7 @@ class BooksController < ApplicationController
       redirect "/books/new"
     elsif !logged_in?
       flash[:message] = "Log in to add a new book."
+      session[:after_login] = "/books/new"
       redirect "/login"
     else
       book_data = get_book_data(params[:search_term])
