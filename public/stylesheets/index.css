@@ -133,6 +133,29 @@ input[type="checkbox"] {
 
 }
 
+.delete-form {
+  display: inline;
+}
+
+a.button, input.button {
+  display: inline;
+  border: 2px solid #ccc;
+  background: #fafafa;
+  margin: 5px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #bababa;
+  text-decoration: none;  
+  font-family: 'Lora', serif;
+}
+
+a.button:hover, input.button:hover {
+  color: #000;
+  border: 2px solid #999;
+  cursor: pointer;
+}
+
 #form-container {
   max-width: 550px;
   box-sizing: border-box;

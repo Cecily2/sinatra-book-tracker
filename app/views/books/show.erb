@@ -17,9 +17,9 @@
 
 <br><br>
 <% if @book.user_id == current_user.id %>
-  <a href="/books/<%= @book.id %>/edit">Edit Book</a>
-  <form action="/books/<%= @book.id %>/delete" method="post">
+  <a href="/books/<%= @book.id %>/edit" class="button" >Edit Book</a>
+  <form class="delete-form" action="/books/<%= @book.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
+    <input class="button" type="submit" value="Delete">
   </form>
 <% end %>
