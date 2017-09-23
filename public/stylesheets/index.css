@@ -96,6 +96,10 @@ h1, h2, h3 {
   font-size: 12px;
 }
 
+.intro {
+  font-size: 20px;
+}
+
 hr {
   clear: both;
   border: 0;
