@@ -7,38 +7,30 @@
   <link rel="stylesheet" href="/stylesheets/index.css">
   <link href="https://fonts.googleapis.com/css?family=Cabin:600|Lora:400,400i,700,700i" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Book Tracker <%= "- #{@title}" if @title %></title>
-  
+  <title>Book Tracker <%= "- #{@title}" if @title %></title>  
   <script src="/js/masonry.pkgd.min.js"></script>
-  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>  
-  
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>   
 </head>
 <body>
-
   <div id="header">
     <div id="logo"><i class="fa fa-book" aria-hidden="true"></i> Book Tracker</div>
     <div id="links">
-      <a href="/">Home</a> &nbsp;&nbsp;
-      |&nbsp;&nbsp; <a href="/users">Users</a> &nbsp;&nbsp;
-      
+      <a href="/">Home</a> &nbsp;&nbsp; |&nbsp;&nbsp; <a href="/users">Users</a> &nbsp;&nbsp;
       <% if logged_in? %>
-      |&nbsp;&nbsp; <a href="/books/new">Add New Book</a>  &nbsp;&nbsp;    
-      |&nbsp;&nbsp; <a href="/logout">Logout</a>
+        |&nbsp;&nbsp; <a href="/books/new">Add New Book</a>  &nbsp;&nbsp;    
+        |&nbsp;&nbsp; <a href="/logout">Logout</a>
       <% else %>
         |&nbsp;&nbsp; <a href="/login">Log In</a> &nbsp;&nbsp;
         |&nbsp;&nbsp; <a href="/signup">Signup</a>
       <% end %>
     </div>
   </div>
-
   <div id="content">
     <div id="container">
-        <%= yield %>
-        <hr>
-        <div id="footer">Designed and coded by Cecily</div>
-      
-      </div>
+      <%= yield %>
+      <hr>
+      <div id="footer">Designed and coded by Cecily</div>
+    </div>
   </div>
-
 </body>
 </html>
