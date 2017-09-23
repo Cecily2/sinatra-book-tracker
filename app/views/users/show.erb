@@ -1,9 +1,36 @@
 <% @title = "#{@user.username}'s books" %>
 
-<p><%= @user.username %> has <%= @user.books.count %> <%= @user.books.count == 1 ? "book" : "books"%></p>
+<p><%= @user.username %> has read <%= @read.count %> <%= @read.count == 1 ? "book" : "books"%> and has <%= @to_read.count %> <%= @to_read.count == 1 ? "book" : "books"%> on their to-read list.</p>
 
-<% @user.books.each do |b| %>
-  <a href="/books/<%= b.id %>"><%= b.name %></a><br>
-  <%= b.author %><br>
-  <img src="<%= b.cover %>"><br><br><hr>
-<% end %>
+<h2><%= @user.username %>'s To-Read List</h2>
+<div class="to-read-grid">
+    <% @to_read.each do |b| %>
+    <div class="grid-item">
+        <img src="<%= b.cover %>">
+        <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
+        by <%= b.author %><br>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<h2>Books <%= @user.username %> has read</h2>
+<div class="read-grid">
+    <% @read.each do |b| %>
+    <div class="grid-item">
+        <img src="<%= b.cover %>">
+        <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
+        by <%= b.author %><br><br>
+      <div class="read-info">
+          <strong>Date Finished:</strong><br>
+          <%= b.date_read.strftime("%B %d, %Y") %><br>
+          <strong>Your Rating:</strong><br> 
+          <% b.rating.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </div>
+
+    </div>
+  <% end %>
+</div>

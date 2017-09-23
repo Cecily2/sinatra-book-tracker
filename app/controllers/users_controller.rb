@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find(params[:id])
+    @to_read = @user.books.where(read: nil).find_each
+    @read = @user.books.where(read: true).find_each
     erb :'users/show'
   end
 
