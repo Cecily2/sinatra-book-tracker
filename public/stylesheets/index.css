@@ -9,9 +9,9 @@ body {
 
 #content {
   background: rgba(255,255,255,0.95);
-  min-height: 100vh;
   padding-top: 65px;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 #container {
@@ -55,6 +55,13 @@ body {
   color: #000;
 }
 
+
+#footer {
+  text-align: right;
+  color: #bababa;
+  font-family: "Cabin";
+  font-size: 12px;
+}
 
 
 a, a:active, a:visited {
