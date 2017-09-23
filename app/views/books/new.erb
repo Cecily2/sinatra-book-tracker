@@ -1,4 +1,7 @@
 <% @title = "Add New Book" %>
+<% if flash.has?(:message) %>
+<div id="flash"><%= flash[:message] %></div>
+<% end %>
 <div id="form-container">
   <h1>Add New Book</h1>
   <form action="/books" method="post">
