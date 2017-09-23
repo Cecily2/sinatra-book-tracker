@@ -5,6 +5,7 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 require 'net/http'
 require 'json'
+require 'rack-flash'
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",
