@@ -78,6 +78,10 @@ h1, h2, h3 {
   margin: 0 0 10px;
 }
 
+.show-page-img {
+  float: left;
+  margin: 0 20px 10px 0;
+}
 
 .grid-item {
   box-sizing: border-box;
@@ -103,7 +107,7 @@ h1, h2, h3 {
   font-size: 12px;
 }
 
-.intro {
+.subhead {
   font-size: 20px;
 }
 

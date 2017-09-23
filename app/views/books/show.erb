@@ -1,17 +1,21 @@
 <% @title = @book.name %>
-
-<img src="<%= @book.cover %>">
-
-<p>Author: <%= @book.author %></p>
+<img class="show-page-img" src="<%= @book.cover %>">
+<h1><%= @book.name %></h1>
+<span class="subhead">by <%= @book.author %></span>
 <p>ISBN: <%= @book.isbn %></p>
-
 <% if @book.read %>
-  <p>Rating: <%= @book.rating %></p>
+  <p>Rating: <% @book.rating.times { %> <i class="fa fa-star"></i> <% } %></p>
   <p>Comments: <%= @book.comments %></p>
-  <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>  
+  <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>
+<% else %>
+  <% if @book.user_id == current_user.id %>
+    You haven't read this book yet.
+  <% else %>
+    <%= @book.user.username %> hasn't read this book yet.
+  <% end %>
 <% end %>
 
-
+<br><br>
 <% if @book.user_id == current_user.id %>
   <a href="/books/<%= @book.id %>/edit">Edit Book</a>
   <form action="/books/<%= @book.id %>/delete" method="post">
