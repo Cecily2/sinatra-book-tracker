@@ -7,6 +7,17 @@ body {
   background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+#flash {
+  background: rgba(255,255,255,0.9);
+  border: 2px solid rgba(255,175,189,0.5);
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto 20px;
+  padding: 10px;
+  width: 100%;
+}
+
 #content {
   background: rgba(255,255,255,0.95);
   padding-top: 65px;
