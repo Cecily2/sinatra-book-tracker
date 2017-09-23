@@ -86,12 +86,13 @@ class BooksController < ApplicationController
     end    
   end
 
-  def get_book_data(search)
-    url = "https://www.googleapis.com/books/v1/volumes?q=#{search}&key=#{ENV['API_KEY']}"
-    uri = URI(url)
-    response = Net::HTTP.get(uri)
-    parsed_response = JSON.parse(response)
-    parsed_response["items"][0]["volumeInfo"]
+  helpers do
+    def get_book_data(search)
+      url = "https://www.googleapis.com/books/v1/volumes?q=#{search}&key=#{ENV['API_KEY']}"
+      uri = URI(url)
+      response = Net::HTTP.get(uri)
+      parsed_response = JSON.parse(response)
+      parsed_response["items"][0]["volumeInfo"]
+    end
   end
-
 end
