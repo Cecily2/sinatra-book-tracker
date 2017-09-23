@@ -1,20 +1,22 @@
-<% @title = "Signup" %>
-
-<form action="/signup" method="post">
-  <p>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username">
-  </p>
-  <p>
-      <label for="email">Email:</label><br>
-      <input type="text" id="email" name="email">
-  </p>
-  <p>
-      <label for="password">Password:</label><br>
-      <input type="password" id="password" name="password">
-  </p>
-  <p>
-    <input type="submit" value="Submit">
-  </p>
-  
-</form>
+<% @title = "Create an Account" %>
+<div id="form-container">
+  <h1>Create an Account</h1>
+    <form action="/signup" method="post">
+      <p>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username">
+      </p>
+      <p>
+          <label for="email">Email:</label><br>
+          <input type="text" id="email" name="email">
+      </p>
+      <p>
+          <label for="password">Password:</label><br>
+          <input type="password" id="password" name="password">
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+      
+    </form>
+</div>

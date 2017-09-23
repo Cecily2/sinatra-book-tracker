@@ -1,16 +1,18 @@
 <% @title = "Login" %>
-
-<form action="/login" method="post">
-  <p>
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username">
-  </p>
-  <p>
-      <label for="password">Password:</label><br>
-      <input type="password" id="password" name="password">
-  </p>
-  <p>
-    <input type="submit" value="Submit">
-  </p>
-  
-</form>
+<div id="form-container">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <p>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username">
+      </p>
+      <p>
+          <label for="password">Password:</label><br>
+          <input type="password" id="password" name="password">
+      </p>
+      <p>
+        <input type="submit" value="Submit">
+      </p>
+      
+    </form>
+</div>
