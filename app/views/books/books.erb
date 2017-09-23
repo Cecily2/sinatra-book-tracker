@@ -1,17 +1,38 @@
-<% @title = "Your Books" %>
+<% @title = "Welcome, #{current_user.username}!" %>
 
-<p>Welcome, <%= current_user.username %></p>
-<p>
-  <a href="/books/new">Add New Book</a>
-</p>
+<p>You've read <%= @read.count %> <%= @read.count == 1 ? "book" : "books"%> and have <%= @to_read.count %> <%= @to_read.count == 1 ? "book" : "books"%> on your to-read list.
+  View them below or <a href="/books/new">add a new book</a>.</p>
 
 
-<div class="grid">
-    <% @books.each do |b| %>
+<h2>Your To-Read List</h2>
+<div class="to-read-grid">
+    <% @to_read.each do |b| %>
     <div class="grid-item">
-        <h2><a href="/books/<%= b.id %>"><%= b.name %></a></h2>
-        <%= b.author %><br>
         <img src="<%= b.cover %>">
+        <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
+        by <%= b.author %><br>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<h2>Books You've Read</h2>
+<div class="read-grid">
+    <% @read.each do |b| %>
+    <div class="grid-item">
+        <img src="<%= b.cover %>">
+        <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
+        by <%= b.author %><br><br>
+      <div class="read-info">
+          <strong>Date Finished:</strong><br>
+          <%= b.date_read.strftime("%B %d, %Y") %><br>
+          <strong>Your Rating:</strong><br> 
+          <% b.rating.times do %>
+            <i class="fa fa-star"></i>
+          <% end %>
+        </div>
+
     </div>
   <% end %>
 </div>
