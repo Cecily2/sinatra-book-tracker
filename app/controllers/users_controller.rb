@@ -24,16 +24,16 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
+      flash[:message] = "Something went wrong. Try again?"
       redirect "/signup"
     end
   end
 
   get "/login" do
     if logged_in?
-      redirect "/books"
-    else
-      erb :'users/login'
+      session.clear
     end
+    erb :'users/login'   
   end
 
   post "/login" do
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
+      flash[:message] = "That didn't work! Try again?"
       redirect "/login"
     end
   end

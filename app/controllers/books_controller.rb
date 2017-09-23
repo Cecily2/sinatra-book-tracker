@@ -6,6 +6,7 @@ class BooksController < ApplicationController
       @read = current_user.books.where(read: true).find_each
       erb :'books/books'
     else
+      flash[:message] = "Log in to view your books."
       redirect "/login"
     end
   end
@@ -14,6 +15,7 @@ class BooksController < ApplicationController
     if logged_in?
       erb :'books/new'
     else
+      flash[:message] = "Log in to add a new book."
       redirect "/login"
     end
   end
@@ -36,6 +38,7 @@ class BooksController < ApplicationController
     end
     
     new_book.save
+    flash[:message] = "We've added your book!"    
     redirect "/books"
   end
 
@@ -49,6 +52,7 @@ class BooksController < ApplicationController
     if logged_in? && @book.user_id == current_user.id      
       erb :'books/edit'    
     else
+      flash[:message] = "You don't have permission to do that."      
       redirect "/login"
     end
   end
@@ -70,8 +74,10 @@ class BooksController < ApplicationController
         @book.comments = nil
       end
       @book.save
+      flash[:message] = "We've updated your book!"
       redirect "/books/#{params[:id]}"
     else
+      flash[:message] = "You don't have permission to do that."
       redirect "/login"
     end
   end
@@ -80,9 +86,11 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if logged_in? && @book.user_id == current_user.id
       @book.delete
+      flash[:message] = "We've deleted your book."      
       redirect "/books"
     else
-      redirect "/books/#{params[:id]}"
+      flash[:message] = "You don't have permission to do that."
+      redirect "/login"
     end    
   end
 
