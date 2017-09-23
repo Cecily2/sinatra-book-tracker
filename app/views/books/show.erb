@@ -8,7 +8,7 @@
   <p>Comments: <%= @book.comments %></p>
   <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>
 <% else %>
-  <% if @book.user_id == current_user.id %>
+  <% if logged_in? && @book.user_id == current_user.id %>
     You haven't read this book yet.
   <% else %>
     <%= @book.user.username %> hasn't read this book yet.
@@ -16,7 +16,7 @@
 <% end %>
 
 <br><br>
-<% if @book.user_id == current_user.id %>
+<% if logged_in? && @book.user_id == current_user.id %>
   <a href="/books/<%= @book.id %>/edit" class="button" >Edit Book</a>
   <form class="delete-form" action="/books/<%= @book.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
