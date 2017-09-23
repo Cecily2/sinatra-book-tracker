@@ -1,5 +1,6 @@
 <% @title = "#{@user.username}'s books" %>
 
+<h1><%= @user.username %>'s books</h1>
 <p><%= @user.username %> has read <%= @read.count %> <%= @read.count == 1 ? "book" : "books"%> and has <%= @to_read.count %> <%= @to_read.count == 1 ? "book" : "books"%> on their to-read list.</p>
 
 <h2><%= @user.username %>'s To-Read List</h2>
@@ -34,3 +35,5 @@
     </div>
   <% end %>
 </div>
+
+<script src="/js/masonry.js"></script>

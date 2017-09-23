@@ -11,13 +11,14 @@
   <input type="hidden" name="_method" value="patch">
 
   <p>
-    <label for="read">Read?</label><br>
-    <input type="checkbox" id="read" name="read" <%= "checked" if @book.read %> >
+      <input type="checkbox" id="read" name="read" <%= "checked" if @book.read %> >
+      <label for="read">I've read it!</label><br>
+    
   </p>
 
   <div <%= "class=\"hide\"" unless @book.read %> id="extraforms">
       <p>
-          <label for="rating">Your Rating:</label><br>
+          <label for="rating">Rating:</label><br>
           <select name="rating" id="rating">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -37,3 +38,6 @@
     <input type="submit" value="Submit">
   </p> 
 </form>
+
+
+<script src="/js/checkbox.js"></script>

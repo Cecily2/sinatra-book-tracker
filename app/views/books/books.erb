@@ -1,4 +1,6 @@
-<% @title = "Welcome, #{current_user.username}!" %>
+<% @title = "Your Books" %>
+
+<h1>Welcome, <%= current_user.username %>!</h1>
 
 <p>You've read <%= @read.count %> <%= @read.count == 1 ? "book" : "books"%> and have <%= @to_read.count %> <%= @to_read.count == 1 ? "book" : "books"%> on your to-read list.
   View them below or <a href="/books/new">add a new book</a>.</p>
@@ -36,3 +38,5 @@
     </div>
   <% end %>
 </div>
+
+<script src="/js/masonry.js"></script>
