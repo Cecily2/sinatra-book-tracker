@@ -1,3 +1,4 @@
+/* BODY */
 body {
   font-family: 'Lora', serif;
   margin: 0;
@@ -6,7 +7,62 @@ body {
   background: -webkit-linear-gradient(to right, #ffafbd, #ffc3a0); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+/* HEADER AND NAVBAR */
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Cabin', sans-serif;  
+  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+#logo {
+  padding: 15px;
+  color: #000;
+  font-size: 22px;
+}
+#links {
+  padding: 7px 10px;
+  margin: 10px 0;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  color: #999;
+  background: rgba(255,255,255,0.4);  
+  border-radius: 7px;
+}
+#links a, #links a:active, #links a:visited {
+  text-decoration: none;
+  color: #666;
+}
+#links a:hover {
+  color: #000;
+}
 
+/* MAIN CONTENT AREA */
+#content {
+  background: rgba(255,255,255,0.95);
+  padding-top: 65px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+#container {
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+a, a:active, a:visited {
+  color: #b27a84; 
+}
+a:hover {
+  color: #7c555c;
+}
+h1, h2, h3 {
+  font-family: 'Cabin', sans-serif;
+  margin: 0 0 10px;
+}
+
+/* FLASH MESSAGE */
 #flash {
   background: rgba(255,255,255,0.9);
   border: 2px solid rgba(255,175,189,0.5);
@@ -18,82 +74,7 @@ body {
   width: 100%;
 }
 
-#content {
-  background: rgba(255,255,255,0.95);
-  padding-top: 65px;
-  box-sizing: border-box;
-  min-height: 100vh;
-}
-
-#container {
-  padding: 15px;
-  margin: 0 auto;
-  max-width: 1000px;
-}
-
-#header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  font-family: 'Cabin', sans-serif;  
-  background: linear-gradient(to right, #ffafbd, #ffc3a0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
-}
-
-#logo {
-  padding: 15px;
-  color: #000;
-  font-size: 22px;
-}
-
-#links {
-  padding: 7px 10px;
-  margin: 10px 0;
-  position: absolute;
-  top: 0;
-  right: 20px;
-  color: #999;
-  background: rgba(255,255,255,0.4);  
-  border-radius: 7px;
-}
-
-#links a, #links a:active, #links a:visited {
-  text-decoration: none;
-  color: #666;
-}
-
-#links a:hover {
-  color: #000;
-}
-
-
-#footer {
-  text-align: right;
-  color: #bababa;
-  font-family: "Cabin";
-  font-size: 12px;
-}
-
-
-a, a:active, a:visited {
-  color: #b27a84; 
-}
-
-a:hover {
-  color: #7c555c;
-}
-
-
-h1, h2, h3 {
-  font-family: 'Cabin', sans-serif;
-  margin: 0 0 10px;
-}
-
-.show-page-img {
-  float: left;
-  margin: 0 20px 10px 0;
-}
-
+/* BOOK GRID STYLES */
 .grid-item {
   box-sizing: border-box;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
@@ -103,89 +84,26 @@ h1, h2, h3 {
   float: left;
   background: #fff;
 }
-
 .grid-item img {
   float: left;
   margin: 0 10px 10px 0;
 }
-
 .grid-item h3 a {
   text-decoration: none;
   font-size: 22px;
 }
-
 .grid-item .read-info {
   font-size: 12px;
 }
 
-.subhead {
-  font-size: 20px;
+/* BOOK SHOW PAGE */
+.show-page-img {
+  float: left;
+  margin: 0 20px 10px 0;
 }
-
-hr {
-  clear: both;
-  border: 0;
-  border-top: 4px dotted #ffafbd;
-  margin: 25px 0;
-}
-
-textarea:focus, input:focus, select:focus {
-  outline: none;
-}
-
-input[type="text"], textarea, input[type="password"] {
-  box-sizing: border-box;
-  font-family: 'Lora', serif;
-  font-size: 18px;
-  width: 100%;
-  padding: 5px;
-  border: 2px solid #ffd7de;
-}
-
-label.read {
-  font-size: 18px;
-}
-
-
-
-input[type="checkbox"] {
-
-}
-
-
-.select-style {
-  border: 2px solid #ffd7de;
-  width: 120px;
-  font-size: 16px;
-  overflow: hidden;
-}
-
-.select-style select {
-  padding: 5px;
-  font-size: 16px;
-  font-family: "Lora", serif;
-  width: 120%;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  background-image: none;
-  -webkit-appearance: none;
-}
-
-.submit {
-  border: 2px solid #ffd7de;
-  background: #fafafa;
-  padding: 5px;
-  font-size: 16px;
-  font-family: "Lora", serif; 
-  font-weight: bold;
-  cursor: pointer;  
-}
-
 .delete-form {
   display: inline;
 }
-
 a.button, input.button {
   display: inline;
   border: 2px solid #ccc;
@@ -198,13 +116,13 @@ a.button, input.button {
   text-decoration: none;  
   font-family: 'Lora', serif;
 }
-
 a.button:hover, input.button:hover {
   color: #000;
   border: 2px solid #999;
   cursor: pointer;
 }
 
+/* FORM STYLES */
 #form-container {
   max-width: 550px;
   box-sizing: border-box;
@@ -213,15 +131,72 @@ a.button:hover, input.button:hover {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
   background: #fff;
 }
-
+textarea:focus, input:focus, select:focus {
+  outline: none;
+}
+input[type="text"], textarea, input[type="password"] {
+  box-sizing: border-box;
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #ffd7de;
+}
+.select-style {
+  border: 2px solid #ffd7de;
+  width: 120px;
+  font-size: 16px;
+  overflow: hidden;
+}
+.select-style select {
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Lora", serif;
+  width: 120%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+label.read {
+  font-size: 18px;
+}
+.submit {
+  border: 2px solid #ffd7de;
+  background: #fafafa;
+  padding: 5px;
+  font-size: 16px;
+  font-family: "Lora", serif; 
+  font-weight: bold;
+  cursor: pointer;  
+}
 div .hide {
   display: none;
 }
-
 .greyed {
   color: #999;
 }
 
+/* MISC LAYOUT STYLES */
+.subhead {
+  font-size: 20px;
+}
+hr {
+  clear: both;
+  border: 0;
+  border-top: 4px dotted #ffafbd;
+  margin: 25px 0;
+}
+#footer {
+  text-align: right;
+  color: #bababa;
+  font-family: "Cabin";
+  font-size: 12px;
+  margin-top: -10px;
+}
+
+/* MEDIA QUERIES */
 @media (max-width: 600px) {
   #links {
     position: relative;
@@ -232,21 +207,15 @@ div .hide {
     background: rgba(255,255,255,0.4);
     border-radius: 0;    
   }
-
-
   #content {
     padding-top: 95px;
   }
-  
-
 }
-
 @media (max-width: 820px) {
   .grid-item {
     width: 48%;
   }
 }
-
 @media (max-width: 540px) {
   .grid-item {
     width: 100%;
