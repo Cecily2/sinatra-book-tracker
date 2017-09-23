@@ -118,6 +118,28 @@ hr {
   margin: 25px 0;
 }
 
+textarea:focus, input:focus{
+  outline: none;
+}
+
+input[type="text"], textarea {
+  font-family: 'Lora', serif;
+  font-size: 18px;
+  width: 100%;
+  max-width: 500px;
+}
+
+input[type="checkbox"] {
+
+}
+
+div .hide {
+  display: none;
+}
+
+.greyed {
+  color: #bababa;
+}
 
 @media (max-width: 600px) {
   #links {

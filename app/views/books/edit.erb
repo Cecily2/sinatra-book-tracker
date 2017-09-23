@@ -1,29 +1,37 @@
 <% @title = "Edit #{@book.name}" %>
 
+<h1>Edit <%= @book.name %></h1>
+
+<p class="greyed">Author: <%= @book.author %></p>
+<p class="greyed">ISBN: <%= @book.isbn %></p>
+
+
 <form action="/books/<%= @book.id %>" method="post">
 
   <input type="hidden" name="_method" value="patch">
 
   <p>
     <label for="read">Read?</label><br>
-    <input type="checkbox" id="read" name="read">
+    <input type="checkbox" id="read" name="read" <%= "checked" if @book.read %> >
   </p>
 
-  <p>
-      <label for="rating">Your Rating:</label><br>
-      <select name="rating" id="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-  </p>
-
-  <p>
-      <label for="comments">Comments:</label><br>
-      <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
-  </p>
+  <div <%= "class=\"hide\"" unless @book.read %> id="extraforms">
+      <p>
+          <label for="rating">Your Rating:</label><br>
+          <select name="rating" id="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+      </p>
+    
+      <p>
+          <label for="comments">Comments:</label><br>
+          <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
+      </p>    
+  </div>
 
   <p>
     <input type="submit" value="Submit">
