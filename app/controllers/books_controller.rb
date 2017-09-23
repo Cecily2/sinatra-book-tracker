@@ -19,20 +19,13 @@ class BooksController < ApplicationController
   end
 
   post "/books" do
-    url = "https://www.googleapis.com/books/v1/volumes?q=#{params[:search_term]}&key=#{ENV['API_KEY']}"
-    uri = URI(url)
-    response = Net::HTTP.get(uri)
-    parsed_response = JSON.parse(response)
-
-    book_data = parsed_response["items"][0]["volumeInfo"]
-
+    book_data = get_book_data(params[:search_term])
     new_book = Book.new
     
     new_book.name = book_data["title"]
     new_book.author = book_data["authors"][0]
     new_book.cover = book_data["imageLinks"]["thumbnail"]
     new_book.isbn = book_data["industryIdentifiers"][0]["identifier"]
-
     new_book.user_id = current_user.id
 
     if params["read"] == "on"
@@ -43,9 +36,7 @@ class BooksController < ApplicationController
     end
     
     new_book.save
-
     redirect "/books"
-
   end
 
   get "/books/:id" do
@@ -73,7 +64,7 @@ class BooksController < ApplicationController
           @book.date_read = Time.now        
         end
       else
-        @book.read = false
+        @book.read = nil
         @book.date_read = nil
         @book.rating = nil
         @book.comments = nil
@@ -93,6 +84,14 @@ class BooksController < ApplicationController
     else
       redirect "/books/#{params[:id]}"
     end    
+  end
+
+  def get_book_data(search)
+    url = "https://www.googleapis.com/books/v1/volumes?q=#{search}&key=#{ENV['API_KEY']}"
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    parsed_response = JSON.parse(response)
+    parsed_response["items"][0]["volumeInfo"]
   end
 
 end
