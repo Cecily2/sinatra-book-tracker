@@ -29,24 +29,28 @@ class BooksController < ApplicationController
       redirect "/login"
     else
       book_data = get_book_data(params[:search_term])
-      new_book = Book.new
-      
-      new_book.name = book_data["title"]
-      new_book.author = book_data["authors"][0]
-      new_book.cover = book_data["imageLinks"]["thumbnail"]
-      new_book.isbn = book_data["industryIdentifiers"][0]["identifier"]
-      new_book.user_id = current_user.id
-  
-      if params["read"] == "on"
-        new_book.read = true
-        new_book.rating = params["rating"].to_i
-        new_book.comments = params["comments"]
-        new_book.date_read = Time.now
+      if book_data = []
+        flash[:message] = "We couldn't find your book - sorry!"
+        redirect "/books/new"
+      else
+        new_book = Book.new
+        new_book.name = book_data["title"]
+        new_book.author = book_data["authors"][0]
+        new_book.cover = book_data["imageLinks"]["thumbnail"]
+        new_book.isbn = book_data["industryIdentifiers"][0]["identifier"]
+        new_book.user_id = current_user.id
+    
+        if params["read"] == "on"
+          new_book.read = true
+          new_book.rating = params["rating"].to_i
+          new_book.comments = params["comments"]
+          new_book.date_read = Time.now
+        end
+        
+        new_book.save
+        flash[:message] = "We've added your book!"    
+        redirect "/books"  
       end
-      
-      new_book.save
-      flash[:message] = "We've added your book!"    
-      redirect "/books"  
     end
   end
 
