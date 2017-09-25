@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do    
-    if user = User.new(params)
-      user.save
+    user = User.new(params)
+    if user.save
       session[:user_id] = user.id
       redirect "/books"
     else
