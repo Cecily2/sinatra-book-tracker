@@ -13,16 +13,16 @@
         <label class="greyed" for="rating">Rating:</label><br>
         <div class="select-style">
             <select name="rating" id="rating">
-            <option value="1">1 star</option>
-            <option value="2">2 stars</option>
-            <option value="3">3 stars</option>
-            <option value="4">4 stars</option>
-            <option value="5">5 stars</option>
+            <option value="1" <%= 'selected="selected"' if @book.rating == 1 %>>1 star</option>
+            <option value="2" <%= 'selected="selected"' if @book.rating == 2 %>>2 stars</option>
+            <option value="3" <%= 'selected="selected"' if @book.rating == 3 %>>3 stars</option>
+            <option value="4" <%= 'selected="selected"' if @book.rating == 4 %>>4 stars</option>
+            <option value="5" <%= 'selected="selected"' if @book.rating == 5 %>>5 stars</option>
             </select>
         </div>  
         <p>
             <label class="greyed" for="comments">Comments:</label><br>
-            <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
+            <textarea name="comments" id="comments" cols="100" rows="10"><%= @book.comments %></textarea>
         </p>    
     </div>
     <p>
