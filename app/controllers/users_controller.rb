@@ -51,7 +51,11 @@ class UsersController < ApplicationController
         redirect "/books"
       end
     else
-      flash[:message] = "That didn't work! Try again?"
+      if user
+        flash[:message] = "Incorrect password! Try again?"
+      else
+        flash[:message] = "No such user! Try again?"
+      end
       redirect "/login"
     end
   end
