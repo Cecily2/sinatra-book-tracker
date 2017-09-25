@@ -1,7 +1,5 @@
 <% @title = "Add New Book" %>
-<% if flash.has?(:message) %>
-<div id="flash"><%= flash[:message] %></div>
-<% end %>
+<% if flash.has?(:message) %><div id="flash"><%= flash[:message] %></div><% end %>
 <div id="form-container">
   <h1>Add New Book</h1>
   <form action="/books" method="post">
@@ -9,9 +7,7 @@
       <label class="greyed" for="search_term">Title or ISBN:</label><br>
       <input type="text" id="search_term" name="search_term">
     </p>
-    <p>
-      <input type="checkbox" id="read" name="read"> <label for="read" class="read">I've read it!</label><br>
-    </p>
+    <p><input type="checkbox" id="read" name="read"> <label for="read" class="read">I've read it!</label></p>
     <div class="hide" id="extraforms">
       <label class="greyed" for="rating">Rating:</label><br>         
       <div class="select-style">
@@ -28,9 +24,7 @@
         <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
       </p>
     </div>  
-    <p>
-      <input type="submit" class="submit" value="Submit">
-    </p> 
+    <p><input type="submit" class="submit" value="Submit"></p> 
   </form>
 </div>
 <script src="/js/checkbox.js"></script>

@@ -26,11 +26,8 @@
             <strong>Date Finished:</strong><br>
             <%= b.date_read.strftime("%B %d, %Y") %><br>
             <strong><%= @user.username %>'s Rating:</strong><br> 
-            <% b.rating.times do %>
-              <i class="fa fa-star"></i>
-            <% end %>
+            <% b.rating.times do %><i class="fa fa-star"></i><% end %>
           </div>
-
       </div>
     <% end %>
   </div>

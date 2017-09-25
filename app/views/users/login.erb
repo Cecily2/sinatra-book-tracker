@@ -1,7 +1,5 @@
 <% @title = "Login" %>
-<% if flash.has?(:message) %>
-  <div id="flash"><%= flash[:message] %></div>
-<% end %>
+<% if flash.has?(:message) %><div id="flash"><%= flash[:message] %></div><% end %>
 <div id="form-container">
     <h1>Login</h1>
     <form action="/login" method="post">
@@ -13,8 +11,6 @@
         <label class="greyed" for="password">Password:</label><br>
         <input type="password" id="password" name="password">
       </p>
-      <p>
-        <input type="submit" value="Submit" class="submit">
-      </p>
+      <p><input type="submit" value="Submit" class="submit"></p>
     </form>
 </div>

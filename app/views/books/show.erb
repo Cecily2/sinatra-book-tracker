@@ -1,7 +1,5 @@
 <% @title = @book.name %>
-<% if flash.has?(:message) %>
-  <div id="flash"><%= flash[:message] %></div>
-<% end %>
+<% if flash.has?(:message) %><div id="flash"><%= flash[:message] %></div><% end %>
 <img class="show-page-img" src="<%= @book.cover %>">
 <h1><%= @book.name %></h1>
 <span class="subhead">by <%= @book.author %></span>
@@ -11,11 +9,7 @@
   <p><strong>Date Read:</strong> <%= @book.date_read.strftime("%B %d, %Y") %></p>  
   <% if @book.comments != "" %> <p><strong>Comments:</strong> <%= @book.comments %></p> <% end %>
 <% else %>
-  <% if logged_in? && @book.user_id == current_user.id %>
-    You haven't read this book yet.
-  <% else %>
-    <%= @book.user.username %> hasn't read this book yet.
-  <% end %>
+  <%= logged_in? && @book.user_id == current_user.id ? "You haven't" : "#{@book.user.username} hasn't" %> read this book yet.
 <% end %>
 <br><br>
 <% if logged_in? && @book.user_id == current_user.id %>

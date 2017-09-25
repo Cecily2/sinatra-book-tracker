@@ -1,7 +1,5 @@
 <% @title = "Your Books" %>
-<% if flash.has?(:message) %>
-  <div id="flash"><%= flash[:message] %></div>
-<% end %>
+<% if flash.has?(:message) %><div id="flash"><%= flash[:message] %></div><% end %>
 <h1>Welcome, <%= current_user.username %>!</h1>
 <% if @read.count == 0 && @to_read.count == 0 %>
   <p>You haven't added any books yet. Would you like to <a href="/books/new">add your first book?</a></p>
@@ -28,17 +26,11 @@
       <% @read.each do |b| %>
       <div class="grid-item">
           <a href="/books/<%= b.id %>"><img src="<%= b.cover %>"></a>
-          <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3>
-          by <%= b.author %><br><br>
+          <h3><a href="/books/<%= b.id %>"><%= b.name %></a></h3> by <%= b.author %><br><br>
         <div class="read-info">
-            <strong>Date Finished:</strong><br>
-            <%= b.date_read.strftime("%B %d, %Y") %><br>
-            <strong>Your Rating:</strong><br> 
-            <% b.rating.times do %>
-              <i class="fa fa-star"></i>
-            <% end %>
-          </div>
-
+          <strong>Date Finished:</strong><br> <%= b.date_read.strftime("%B %d, %Y") %><br>
+          <strong>Your Rating:</strong><br> <% b.rating.times do %><i class="fa fa-star"></i><% end %>
+        </div>
       </div>
     <% end %>
   </div>
