@@ -5,11 +5,11 @@
 <img class="show-page-img" src="<%= @book.cover %>">
 <h1><%= @book.name %></h1>
 <span class="subhead">by <%= @book.author %></span>
-<p>ISBN: <%= @book.isbn %></p>
+<p><strong>ISBN:</strong> <%= @book.isbn %></p>
 <% if @book.read %>
-  <p>Rating: <% @book.rating.times { %> <i class="fa fa-star"></i> <% } %></p>
-  <p>Comments: <%= @book.comments %></p>
-  <p>Date Read: <%= @book.date_read.strftime("%B %d, %Y") %></p>
+  <p><strong>Rating:</strong> <% @book.rating.times { %> <i class="fa fa-star"></i> <% } %></p>
+  <p><strong>Date Read:</strong> <%= @book.date_read.strftime("%B %d, %Y") %></p>  
+  <% if @book.comments != "" %> <p><strong>Comments:</strong> <%= @book.comments %></p> <% end %>
 <% else %>
   <% if logged_in? && @book.user_id == current_user.id %>
     You haven't read this book yet.
