@@ -24,7 +24,12 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/books"
     else
-      flash[:message] = "Something went wrong. Try again?"
+      flash[:message] = ""
+      user.errors.each do |key, array|
+        flash[:message] += "#{key.to_s.capitalize} "
+        flash[:message] += "#{array}. "
+      end
+      flash[:message] += "Try again?"
       redirect "/signup"
     end
   end
