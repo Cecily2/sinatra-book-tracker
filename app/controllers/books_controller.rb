@@ -2,8 +2,8 @@ class BooksController < ApplicationController
 
   get "/books" do
     if logged_in?
-      @to_read = current_user.books.where(read: nil)
-      @read = current_user.books.where(read: true)
+      @to_read = current_user.to_read
+      @read = current_user.read
       erb :'books/books'
     else
       flash[:message] = "Log in to view your books."
@@ -22,36 +22,21 @@ class BooksController < ApplicationController
   end
 
   post "/books" do
-    if params[:search_term] == ""
-      flash[:message] = "Enter a title or ISBN."
-      redirect "/books/new"
-    elsif !logged_in?
+    if !logged_in?
       flash[:message] = "Log in to add a new book."
       session[:after_login] = "/books/new"
       redirect "/login"
+    elsif params[:search_term] == ""
+        flash[:message] = "Enter a title or ISBN."
+        redirect "/books/new"  
     else
-      book_data = get_book_data(params[:search_term])
-      if book_data == nil
-        flash[:message] = "We couldn't find your book - sorry!"
-        redirect "/books/new"
-      else
-        new_book = Book.new
-        new_book.name = book_data["title"]
-        new_book.author = book_data["authors"][0]
-        new_book.cover = book_data["imageLinks"]["thumbnail"]
-        new_book.isbn = book_data["industryIdentifiers"][0]["identifier"]
-        new_book.user_id = current_user.id
-    
-        if params["read"] == "on"
-          new_book.read = true
-          new_book.rating = params["rating"].to_i
-          new_book.comments = params["comments"]
-          new_book.date_read = Time.now
-        end
-        
-        new_book.save
+      book = Book.get_book_data(user: current_user, book_attributes: params[:book], search_term: params[:search_term])
+      if book && book.save   
         flash[:message] = "We've added your book!"    
         redirect "/books"  
+      else 
+        flash[:message] = "We couldn't find your book - sorry!"
+        redirect "/books/new"
       end
     end
   end
@@ -108,17 +93,4 @@ class BooksController < ApplicationController
     end    
   end
 
-  helpers do
-    def get_book_data(search)
-      url = "https://www.googleapis.com/books/v1/volumes?q=#{search}&key=#{ENV['API_KEY']}"
-      uri = URI(url)
-      response = Net::HTTP.get(uri)
-      parsed_response = JSON.parse(response)
-      if parsed_response["totalItems"] >= 1
-        parsed_response["items"][0]["volumeInfo"]
-      else
-        nil
-      end
-    end
-  end
 end

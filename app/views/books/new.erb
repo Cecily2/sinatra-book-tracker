@@ -7,11 +7,11 @@
       <label class="greyed" for="search_term">Title or ISBN:</label><br>
       <input type="text" id="search_term" name="search_term">
     </p>
-    <p><input type="checkbox" id="read" name="read"> <label for="read" class="read">I've read it!</label></p>
+    <p><input type="checkbox" id="read" name="book[read]"> <label for="read" class="read">I've read it!</label></p>
     <div class="hide" id="extraforms">
       <label class="greyed" for="rating">Rating:</label><br>         
       <div class="select-style">
-        <select name="rating" id="rating">
+        <select name="book[rating]" id="rating">
           <option value="1">1 star</option>
           <option value="2">2 stars</option>
           <option value="3">3 stars</option>
@@ -21,7 +21,7 @@
       </div>  
       <p>
         <label class="greyed" for="comments">Comments:</label><br>
-        <textarea name="comments" id="comments" cols="100" rows="10"></textarea>
+        <textarea name="book[comments]" id="comments" cols="100" rows="10"></textarea>
       </p>
     </div>  
     <p><input type="submit" class="submit" value="Submit"></p> 

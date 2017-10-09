@@ -5,8 +5,6 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     @user = User.find(params[:id])
-    @to_read = @user.books.where(read: nil)
-    @read = @user.books.where(read: true)
     erb :'users/show'
   end
 
@@ -25,9 +23,9 @@ class UsersController < ApplicationController
       redirect "/books"
     else
       flash[:message] = ""
-      user.errors.each do |key, array|
+      user.errors.each do |key, item|
         flash[:message] += "#{key.to_s.capitalize} "
-        flash[:message] += "#{array}. "
+        flash[:message] += "#{item}. "
       end
       flash[:message] += "Try again?"
       redirect "/signup"
