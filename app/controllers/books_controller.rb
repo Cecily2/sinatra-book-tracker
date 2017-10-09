@@ -2,8 +2,8 @@ class BooksController < ApplicationController
 
   get "/books" do
     if logged_in?
-      @to_read = current_user.books.where(read: nil).find_each
-      @read = current_user.books.where(read: true).find_each
+      @to_read = current_user.books.where(read: nil)
+      @read = current_user.books.where(read: true)
       erb :'books/books'
     else
       flash[:message] = "Log in to view your books."
